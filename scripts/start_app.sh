@@ -2,9 +2,9 @@
 
 sed -i 's/\[]/\["13.51.109.155"]/' /home/ubuntu/Resume/resume/settings.py
 
-python manage.py migrate 
-python manage.py makemigrations     
-python manage.py collectstatic
+python3 manage.py migrate 
+python3 manage.py makemigrations     
+python3 manage.py collectstatic
 sudo service gunicorn restart
 sudo service nginx restart
 #sudo tail -f /var/log/nginx/error.log
