@@ -31,15 +31,19 @@ sed -i "s/\[\]/\[\"$IP_ADDRESS\"\]/" $SETTINGS_FILE
 # Activate the virtual environment
 source $VENV_DIR/bin/activate || { echo "Failed to activate virtual environment"; exit 1; }
 
+# Ensure the script is in the project directory each time it runs a Django command
+cd $PROJECT_DIR || { echo "Failed to navigate to project directory"; exit 1; }
 # Check if manage.py exists in the current directory
 if [ ! -f manage.py ]; then
     echo "manage.py not found in the current directory: $(pwd)"
     exit 1
 fi
-
-# Run Django management commands
 python3 manage.py makemigrations || { echo "Failed to run makemigrations"; exit 1; }
+
+cd $PROJECT_DIR || { echo "Failed to navigate to project directory"; exit 1; }
 python3 manage.py migrate || { echo "Failed to run migrate"; exit 1; }
+
+cd $PROJECT_DIR || { echo "Failed to navigate to project directory"; exit 1; }
 python3 manage.py collectstatic --noinput || { echo "Failed to run collectstatic"; exit 1; }
 
 # Restart Gunicorn and Nginx services
