@@ -4,3 +4,4 @@ sudo cp /home/ubuntu/Resume/gunicorn/gunicorn.service  /etc/systemd/system/gunic
 
 sudo systemctl start gunicorn.service
 sudo systemctl enable gunicorn.service
+cd /home/ubuntu/Resume

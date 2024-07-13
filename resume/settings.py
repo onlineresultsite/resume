@@ -19,6 +19,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # mean that Django will look at the static from static/ directory under your project.
 STATIC_DIR = BASE_DIR / 'static'
 
+STATICFILES_DIRS = [
+    '/home/ubuntu/Resume/static',
+]
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
